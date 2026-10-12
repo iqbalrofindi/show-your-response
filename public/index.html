@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>History - ShowYourResponse</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <h1>ShowYourResponse</h1>
+      </div>
+      <div class="topbar-actions">
+        <span class="muted">Login sebagai <strong id="current-user">-</strong></span>
+        <button id="btn-change-password" class="btn">Ganti Password</button>
+        <button id="btn-logout" class="btn btn-outline">Logout</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="card endpoint-card">
+        <div>
+          <div class="label">Endpoint penerima (method apa pun, body apa pun)</div>
+          <code id="endpoint-url"></code>
+        </div>
+        <button id="btn-copy-endpoint" class="btn">Copy URL</button>
+      </section>
+
+      <section class="card">
+        <div class="toolbar">
+          <input id="filter-q" type="search" placeholder="Cari path, body, header, IP..." />
+          <select id="filter-method">
+            <option value="">Semua method</option>
+            <option>GET</option>
+            <option>POST</option>
+            <option>PUT</option>
+            <option>PATCH</option>
+            <option>DELETE</option>
+            <option>HEAD</option>
+            <option>OPTIONS</option>
+          </select>
+          <select id="filter-limit">
+            <option value="25">25 / halaman</option>
+            <option value="50">50 / halaman</option>
+            <option value="100">100 / halaman</option>
+          </select>
+          <label class="checkbox">
+            <input id="auto-refresh" type="checkbox" />
+            <span>Auto refresh (5s)</span>
+          </label>
+          <div class="spacer"></div>
+          <button id="btn-refresh" class="btn">Refresh</button>
+          <button id="btn-delete-all" class="btn btn-danger">Hapus Semua</button>
+        </div>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Waktu</th>
+                <th>Method</th>
+                <th>Path</th>
+                <th>Content-Type</th>
+                <th>IP</th>
+                <th>Body</th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+          <p id="empty-state" class="empty" hidden>Belum ada data yang diterima.</p>
+        </div>
+
+        <div class="pagination">
+          <span id="page-info" class="muted"></span>
+          <div>
+            <button id="btn-prev" class="btn">&larr; Sebelumnya</button>
+            <button id="btn-next" class="btn">Berikutnya &rarr;</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="detail-dialog" class="dialog dialog-wide">
+      <div class="dialog-header">
+        <h2>Detail Request <span id="detail-id"></span></h2>
+        <button class="btn btn-icon" data-close aria-label="Tutup">&times;</button>
+      </div>
+      <div class="dialog-body">
+        <dl id="detail-meta" class="meta"></dl>
+        <div class="section-title">
+          <h3>Body</h3>
+          <button id="btn-copy-body" class="btn btn-small">Copy Body</button>
+        </div>
+        <pre id="detail-body" class="code"></pre>
+        <h3>Query</h3>
+        <pre id="detail-query" class="code"></pre>
+        <h3>Headers</h3>
+        <pre id="detail-headers" class="code"></pre>
+      </div>
+      <div class="dialog-footer">
+        <button id="btn-delete-one" class="btn btn-danger">Hapus</button>
+        <button class="btn" data-close>Tutup</button>
+      </div>
+    </dialog>
+
+    <dialog id="password-dialog" class="dialog">
+      <form id="password-form" class="form">
+        <div class="dialog-header">
+          <h2>Ganti Password</h2>
+          <button type="button" class="btn btn-icon" data-close aria-label="Tutup">&times;</button>
+        </div>
+        <div class="dialog-body">
+          <label>
+            <span>Password lama</span>
+            <input name="currentPassword" type="password" autocomplete="current-password" required />
+          </label>
+          <label>
+            <span>Password baru (min. 8 karakter)</span>
+            <input name="newPassword" type="password" autocomplete="new-password" minlength="8" required />
+          </label>
+          <label>
+            <span>Konfirmasi password baru</span>
+            <input name="confirmPassword" type="password" autocomplete="new-password" minlength="8" required />
+          </label>
+          <p id="password-error" class="alert alert-error" hidden></p>
+          <p id="password-success" class="alert alert-success" hidden></p>
+        </div>
+        <div class="dialog-footer">
+          <button type="button" class="btn" data-close>Batal</button>
+          <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+      </form>
+    </dialog>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <script src="/assets/app.js"></script>
+  </body>
+</html>

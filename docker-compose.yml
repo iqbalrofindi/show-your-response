@@ -1,0 +1,16 @@
+services:
+  show-your-response:
+    build: .
+    container_name: show-your-response
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      PORT: 3000
+      DATA_DIR: /app/data
+    volumes:
+      - syr-data:/app/data
+
+volumes:
+  syr-data:

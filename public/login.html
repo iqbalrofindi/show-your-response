@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login - ShowYourResponse</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+  </head>
+  <body class="auth-page">
+    <main class="auth-card">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <h1>ShowYourResponse</h1>
+      </div>
+      <p class="muted">Masuk untuk melihat history data yang diterima.</p>
+
+      <form id="login-form" class="form" autocomplete="on">
+        <label>
+          <span>Username</span>
+          <input name="username" type="text" autocomplete="username" required autofocus />
+        </label>
+        <label>
+          <span>Password</span>
+          <input name="password" type="password" autocomplete="current-password" required />
+        </label>
+        <p id="login-error" class="alert alert-error" hidden></p>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
+    </main>
+
+    <script src="/assets/login.js"></script>
+  </body>
+</html>
