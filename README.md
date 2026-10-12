@@ -59,7 +59,7 @@ Open `http://localhost:3000/` and log in with the default user:
 
 | Username       | Password   |
 | -------------- | ---------- |
-| `iqbalrofindi` | `12345678` |
+| `admin`        | `12345678` |
 
 Change the password right away using the **Ganti Password** button in the dashboard.
 
@@ -96,7 +96,7 @@ docker run -d --name show-your-response -p 3000:3000 \
 | ------------------ | -------------- | ----------- |
 | `PORT`             | `3000`         | App port. With Docker: the host port. |
 | `DATA_DIR`         | `./data`       | SQLite database folder. Always `/app/data` in Docker. |
-| `DEFAULT_USERNAME` | `iqbalrofindi` | Initial user, only used when the database is empty. |
+| `DEFAULT_USERNAME` | `admin`        | Initial user, only used when the database is empty. |
 | `DEFAULT_PASSWORD` | `12345678`     | Initial password, only used when the database is empty. |
 | `RECEIVE_API_KEY`  | (empty)        | If set, requests to `/api/receive` must include the `x-api-key` header. |
 | `BODY_LIMIT`       | `10mb`         | Maximum accepted body size. |
